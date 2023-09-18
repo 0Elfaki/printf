@@ -34,8 +34,6 @@ int _printf(const char *format, ...)
 			if (format[i] == 's')
 			{
 				str = va_arg(args, char*);
-				if (str == NULL)
-				printf("(nil)");
 				for (len = 0; str[len] != '\0'; len++)
 					;
 				write(1, str, len);
