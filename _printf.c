@@ -13,7 +13,7 @@ int _printf(const char *format, ...)
 	char c, *str;
 
 	if (format == NULL)
-		return (1);
+		return (-1);
 	va_start(args, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
@@ -34,6 +34,7 @@ int _printf(const char *format, ...)
 			if (format[i] == 's')
 			{
 				str = va_arg(args, char*);
+				if (str == NULL);
 				for (len = 0; str[len] != '\0'; len++)
 					;
 				write(1, str, len);
