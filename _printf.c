@@ -34,6 +34,14 @@ int _printf(const char *format, ...)
 			if (format[i] == 's')
 			{
 				str = va_arg(args, char*);
+				if (str == NULL)
+					str = "(null)";
+				while (*str)
+				{
+					write(1, str, 1);
+					str++;
+					count++;
+				}
 				for (len = 0; str[len] != '\0'; len++)
 					;
 				write(1, str, len);
