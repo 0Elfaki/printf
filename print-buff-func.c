@@ -9,5 +9,4 @@
 int print_buff(char *buf, unsigned int nbuf)
 {
 	return (write(1, buf, nbuf));
-
 }
