@@ -18,5 +18,4 @@ unsigned int handl_buff(char *buf, char c, unsigned int ibuf)
 	buf[ibuf] = c;
 	ibuf++;
 	return (ibuf);
-
 }
