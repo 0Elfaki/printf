@@ -24,30 +24,30 @@ int _printf(const char *format, ...)
 		if (format[i] == '%')
 		{
 			if (format[i + 1] == '\0')
-			{	print_buf(buffer, ibuf), free(buffer), va_end(args);
+			{	print_buff(buffer, ibuf), free(buffer), va_end(args);
 				return (-1);
 			}
 			else
-			{	function = get_print_func(format, i + 1);
+			{	function = sel_print_func(format, i + 1);
 				if (function == NULL)
 				{
 					if (format[i + 1] == ' ' && !format[i + 2])
 						return (-1);
-					handl_buf(buffer, format[i], ibuf), len++, i--;
+					handl_buff(buffer, format[i], ibuf), len++, i--;
 				}
 				else
 				{
 					len += function(args, buffer, ibuf);
-					i += ev_print_func(format, i + 1);
+					i += id_print_func(format, i + 1);
 				}
 			} i++;
 		}
 		else
-			handl_buf(buffer, format[i], ibuf), len++;
+			handl_buff(buffer, format[i], ibuf), len++;
 		for (ibuf = len; ibuf > 1024; ibuf -= 1024)
 			;
 	}
-	print_buf(buffer, ibuf), free(buffer), va_end(args);
+	print_buff(buffer, ibuf), free(buffer), va_end(args);
 	return (len);
 }
 

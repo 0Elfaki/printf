@@ -14,7 +14,7 @@ int print_chr(va_list args, char *buf, unsigned int ibuf)
 	char c;
 
 	c = va_arg(args, int);
-	handl_buf(buf, c, ibuf);
+	handl_buff(buf, c, ibuf);
 
 	return (1);
 }

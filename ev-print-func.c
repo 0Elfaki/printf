@@ -1,15 +1,15 @@
 #include "main.h"
 
 /**
- * ev_print_func - returns the amount of identifiers.
+ * id_print_func - returns the amount of identifiers.
  * @s: argument indentifier
  * @index: index of argument identifier.
  * Return: amount of identifiers.
  */
 
-int ev_print_func(const char *s, int index)
+int id_print_func(const char *s, int index)
 {
-	print_t pr[] = {
+	print_fun pa[] = {
 		{"c", print_chr}, {"s", print_str},
 		{"%", print_prg}, {"l", print_prg}, {" %", print_prg},
 		{NULL, NULL},
@@ -17,11 +17,11 @@ int ev_print_func(const char *s, int index)
 	int i = 0, j = 0, first_index;
 
 	first_index = index;
-	while (pr[i].type_arg)
+	while (pa[i].type_arg)
 	{
-		if (s[index] == pr[i].type_arg[j])
+		if (s[index] == pa[i].type_arg[j])
 		{
-			if (pr[i].type_arg[j + 1] != '\0')
+			if (pa[i].type_arg[j + 1] != '\0')
 				index++, j++;
 			else
 				break;

@@ -13,7 +13,7 @@ int print_prg(va_list a, char *buf, unsigned int i)
 {
 	(void)a;
 
-	handl_buf(buf, '%', i);
+	handl_buff(buf, '%', i);
 
 	return (1);
 }

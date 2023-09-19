@@ -1,15 +1,16 @@
 #include "main.h"
 
 /**
- * get_print_func - selects function to perform the operation
+ * sel_print_func - selects function to perform the operation
  * @s: argument indentifier
  * @index: index for argument indentifier
  * Return: pointer to a function
  *
  */
-int (*get_print_func(const char *s, int index))(va_list, char *, unsigned int)
+
+int (*sel_print_func(const char *s, int index))(va_list, char *, unsigned int)
 {
-	print_t pr[] = {
+	print_fun pa[] = {
 		{"c", print_chr}, {"s", print_str},
 		{"%", print_prg}, {" %", print_prg},
 		{NULL, NULL},
@@ -18,11 +19,11 @@ int (*get_print_func(const char *s, int index))(va_list, char *, unsigned int)
 	int i = 0, j = 0, first_index;
 
 	first_index = index;
-	while (pr[i].type_arg)
+	while (pa[i].type_arg)
 	{
-		if (s[index] == pr[i].type_arg[j])
+		if (s[index] == pa[i].type_arg[j])
 		{
-			if (pr[i].type_arg[j + 1] != '\0')
+			if (pa[i].type_arg[j + 1] != '\0')
 				index++, j++;
 			else
 				break;
@@ -34,6 +35,6 @@ int (*get_print_func(const char *s, int index))(va_list, char *, unsigned int)
 			index = first_index;
 		}
 	}
-	return (pr[i].f);
+	return (pa[i].f);
 }
 
