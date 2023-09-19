@@ -1,51 +1,53 @@
 #include "main.h"
 
 /**
- * _printf - entry point
- * @format: string formate
- * Return: number of characters printed
+ * _printf - formatted output.
+ * @format: input string.
+ *
+ * Return: number of chars printed.
  */
 
 int _printf(const char *format, ...)
 {
+	unsigned int i = 0, len = 0, ibuf = 0;
 	va_list args;
-	int i, len, count = 0;
-	char c, *str;
+	int (*function)(va_list, char *, unsigned int);
+	char *buffer;
 
-	if (format == NULL)
+	va_start(args, format), buffer = malloc(sizeof(char) * 1024);
+	if (!format || !buffer || (format[i] == '%' && !format[i + 1]))
 		return (-1);
-	va_start(args, format);
-	for (i = 0; format[i] != '\0'; i++)
+	if (!format[i])
+		return (0);
+	for (i = 0; format && format[i]; i++)
 	{
-		if (format[i] != '%')
+		if (format[i] == '%')
 		{
-			write(1, &format[i], 1);
-			count++;
+			if (format[i + 1] == '\0')
+			{	print_buf(buffer, ibuf), free(buffer), va_end(args);
+				return (-1);
+			}
+			else
+			{	function = get_print_func(format, i + 1);
+				if (function == NULL)
+				{
+					if (format[i + 1] == ' ' && !format[i + 2])
+						return (-1);
+					handl_buf(buffer, format[i], ibuf), len++, i--;
+				}
+				else
+				{
+					len += function(args, buffer, ibuf);
+					i += ev_print_func(format, i + 1);
+				}
+			} i++;
 		}
 		else
-		{	i++;
-			if (format[i] == 'c')
-			{
-				c = va_arg(args, int);
-				write(1, &c, 1);
-				count++;
-			}
-
-			if (format[i] == 's')
-			{
-				str = va_arg(args, char*);
-				for (len = 0; str[len] != '\0'; len++)
-					;
-				write(1, str, len);
-				count++;
-			}
-			if (format[i] == '%')
-			{
-				write(1, &format[i], 1);
-				count++;
-			}
-		}
+			handl_buf(buffer, format[i], ibuf), len++;
+		for (ibuf = len; ibuf > 1024; ibuf -= 1024)
+			;
 	}
-		va_end(args);
-		return (count);
+	print_buf(buffer, ibuf), free(buffer), va_end(args);
+	return (len);
 }
+
