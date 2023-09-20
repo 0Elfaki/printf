@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * id_print_func - returns the amount of identifiers.
+ * idd_print_func - returns the amount of identifiers.
  * @s: argument indentifier
  * @index: index of argument identifier.
  * Return: amount of identifiers.
@@ -12,7 +12,7 @@ int id_print_func(const char *s, int index)
 	print_fun pa[] = {
 		{"c", print_chr}, {"s", print_str},
 		{"%", print_prg}, {"l", print_prg}, {" %", print_prg},
-		{"i", print_int}, {"d", print_int}
+		{"i", print_int}, {"d", print_int},
 		{NULL, NULL},
 	};
 	int i = 0, j = 0, first_index;

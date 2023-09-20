@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * sel_print_func - selects function to perform the operation
+ * sell_print_func - selects function to perform the operation
  * @s: argument indentifier
  * @index: index for argument indentifier
  * Return: pointer to a function
@@ -13,7 +13,7 @@ int (*sel_print_func(const char *s, int index))(va_list, char *, unsigned int)
 	print_fun pa[] = {
 		{"c", print_chr}, {"s", print_str},
 		{"%", print_prg}, {" %", print_prg},
-		{"i", print_int}, {"d", print_int}
+		{"i", print_int}, {"d", print_int},
 		{NULL, NULL},
 	};
 
