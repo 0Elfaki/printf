@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * sell_print_func - selects function to perform the operation
+ * sel_print_func - selects function to perform the operation
  * @s: argument indentifier
  * @index: index for argument indentifier
  * Return: pointer to a function
