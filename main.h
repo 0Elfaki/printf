@@ -30,5 +30,7 @@ int id_print_func(const char *s, int index);
 unsigned int handl_buff(char *buf, char c, unsigned int ibuf);
 int print_buff(char *buf, unsigned int nbuf);
 int print_int(va_list args, char *buf, unsigned int ibuf);
+int print_bnr(va_list args, char *buf, unsigned int ibuf);
+char *fill_binary_array(char *binary, long int int_in, int isneg, int limit);
 
 #endif /* MAIN_H */
