@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * printt_int - prints an integer
+ * print_int - prints an integer
  * @args: input string
  * @buf: buffer pointer
  * @ibuf: index for buffer pointer
