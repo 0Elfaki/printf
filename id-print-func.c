@@ -16,7 +16,9 @@ int id_print_func(const char *s, int index)
 		{"b", print_bnr},
 		{NULL, NULL},
 	};
-	int i = 0, j = 0;
+	int i = 0, j = 0, first_index;
+
+	first_index = index;
 
 	while (pa[i].type_arg)
 	{
@@ -31,6 +33,7 @@ int id_print_func(const char *s, int index)
 		{
 			j = 0;
 			i++;
+			index = first_index;
 		}
 	}
 	return (j);
